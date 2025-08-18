@@ -9,21 +9,21 @@ direction RL
         +int id
         +String email
         +String firstName
-        +String phone
         +String lastName
-    }
-    
-    class ProductVariant {
-        +int id
-        +String color
-        +String stock
-        +Double price
+        +String phone
     }
 
     class Product {
         +int id
         +String name
         +String description
+    }
+
+    class ProductVariant {
+        +int id
+        +String color
+        +int stock
+        +Double price
     }
 
     class Order {
@@ -44,11 +44,24 @@ direction RL
         +String address
         +String extraAddress
         +Enum status
-        +String estimatedDelivery
+        +Date estimatedDelivery
     }
 
+    class Payment {
+        +int id
+        +Enum status
+        +String transactionReference
+        +Double amount
+        +String paymentMethod
+        +Date createdAt
+        +Date updatedAt
+    }
+
+    %% Relaciones
     Customer "1" --> "0..*" Order : places
     Order "1" --> "1..*" OrderItem : contains
-    OrderItem "1" --> "1" Product : refers
-    Order "1" --> "1" Delivery : delivers
+    OrderItem "1" --> "1" ProductVariant : refers
     Product "1" --> "1..*" ProductVariant: variants
+    Order "1" --> "0..1" Delivery : delivers
+    Order "1" --> "1" Payment : has
+    Payment "1" --> "1" Order : belongs

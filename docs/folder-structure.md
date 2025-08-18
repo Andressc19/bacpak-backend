@@ -11,41 +11,88 @@ src
 │   │   │   ├── entities
 │   │   │   │   ├── product.entity.ts
 │   │   │   │   ├── product-variant.entity.ts
-│   │   │   │   ├── order.entity.ts
-│   │   │   │   ├── order-item.entity.ts
-│   │   │   │   └── delivery.entity.ts
+│   │   │   │   └── stock.entity.ts
 │   │   │   ├── repositories
-│   │   │   │   ├── product.repository.ts
-│   │   │   │   └── order.repository.ts
+│   │   │   │   └── product.repository.ts
 │   │   │   └── services
 │   │   │       └── stock.service.ts
-│   │   ├── infra
-│   │   │   ├── db
-│   │   │   │   ├── product.repository.impl.ts
-│   │   │   │   └── order.repository.impl.ts
-│   │   │   ├── http
-│   │   │   │   └── store.controller.ts
-│   │   │   └── store.module.ts
-│   │   └── index.ts
+│   │   └── infra
+│   │       ├── db
+│   │       │   └── product.repository.impl.ts
+│   │       ├── http
+│   │       │   └── store.controller.ts
+│   │       └── store.module.ts
 │   │
-│   ├── payments
+│   ├── orders
 │   │   ├── app
 │   │   │   └── use-cases
-│   │   │       ├── create-payment.usecase.ts
-│   │   │       └── verify-payment.usecase.ts
+│   │   │       ├── create-order.usecase.ts
+│   │   │       └── assign-product.usecase.ts
 │   │   ├── domain
 │   │   │   ├── entities
-│   │   │   │   └── payment.entity.ts
+│   │   │   │   ├── order.entity.ts
+│   │   │   │   └── order-item.entity.ts
 │   │   │   ├── repositories
-│   │   │   │   └── payment.gateway.ts
+│   │   │   │   └── order.repository.ts
 │   │   │   └── services
-│   │   ├── infra
-│   │   │   ├── gateways
-│   │   │   │   └── payment.adapter.ts
-│   │   │   ├── http
-│   │   │   │   └── payment.controller.ts
-│   │   │   └── payment.module.ts
-│   │   └── index.ts
+│   │   └── infra
+│   │       ├── db
+│   │       │   └── order.repository.impl.ts
+│   │       ├── http
+│   │       │   └── order.controller.ts
+│   │       └── order.module.ts
+│   │
+│   ├── customers
+│   │   ├── app
+│   │   │   └── use-cases
+│   │   │       └── register-customer.usecase.ts
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   └── customer.entity.ts
+│   │   │   ├── repositories
+│   │   │   │   └── customer.repository.ts
+│   │   │   └── services
+│   │   └── infra
+│   │       ├── db
+│   │       │   └── customer.repository.impl.ts
+│   │       ├── http
+│   │       │   └── customer.controller.ts
+│   │       └── customer.module.ts
+│   │
+│   ├── deliveries
+│   │   ├── app
+│   │   │   └── use-cases
+│   │   │       └── create-delivery.usecase.ts
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   └── delivery.entity.ts
+│   │   │   ├── repositories
+│   │   │   │   └── delivery.repository.ts
+│   │   │   └── services
+│   │   └── infra
+│   │       ├── db
+│   │       │   └── delivery.repository.impl.ts
+│   │       ├── http
+│   │       │   └── delivery.controller.ts
+│   │       └── delivery.module.ts
+│   │
+│   └── payments
+│       ├── app
+│       │   └── use-cases
+│       │       ├── create-payment.usecase.ts
+│       │       └── verify-payment.usecase.ts
+│       ├── domain
+│       │   ├── entities
+│       │   │   └── payment.entity.ts
+│       │   ├── repositories
+│       │   │   └── payment.gateway.ts
+│       │   └── services
+│       └── infra
+│           ├── gateways
+│           │   └── wompi.adapter.ts
+│           ├── http
+│           │   └── payment.controller.ts
+│           └── payment.module.ts
 │
 ├── shared
 │   ├── errors
@@ -53,6 +100,7 @@ src
 │   └── utils
 │       └── date.util.ts
 │
-├── app.module.ts      # módulo raíz NestJS
-└── main.ts            # bootstrap
+├── app.module.ts
+└── main.ts
+
 ```
