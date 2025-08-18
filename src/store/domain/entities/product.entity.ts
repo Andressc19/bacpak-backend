@@ -13,6 +13,9 @@ export class Product {
     @Column()
     description: string;
 
+    @Column()
+    imageBaseUrl: string;
+
     @OneToMany(() => ProductVariant, (productVariant) => productVariant.product)
     variants: ProductVariant[];
 }

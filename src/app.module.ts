@@ -15,22 +15,23 @@ import { Customer } from './customers/domain/entities/customer.entity';
 import { Payment } from './payments/domain/entities/payment.entity';
 import { Delivery } from './deliveries/domain/entities/delivery.entity';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-        type: 'postgres',
-        url: process.env.POSTGRES_URL,
-        synchronize: true,
-        logging: true,
-        entities: [Product, ProductVariant, OrderItem, Order, Customer, Payment, Delivery ],
-        migrations: [],
-        subscribers: [],
-        extra: {
-          ssl: {
-            rejectUnauthorized: false,
-          },
+      type: 'postgres',
+      url: process.env.POSTGRES_URL,
+      synchronize: false,
+      logging: true,
+      entities: [Product, ProductVariant, OrderItem, Order, Customer, Payment, Delivery],
+      migrations: [],
+      subscribers: [],
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
         },
+      },
     }),
     CustomersModule,
     PaymentsModule,

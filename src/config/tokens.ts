@@ -1,0 +1,3 @@
+export const TOKENS = {
+    PRODUCT_REPOSITORY: Symbol('PRODUCT_REPOSITORY')
+}
