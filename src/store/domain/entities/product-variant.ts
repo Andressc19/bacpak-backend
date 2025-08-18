@@ -5,6 +5,7 @@ import { OrderItem } from "../../../orders/domain/entities/order-item";
 
 @Entity('product_variants')
 export class ProductVariant {
+    
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -13,6 +14,9 @@ export class ProductVariant {
 
     @Column()
     stock: number;
+
+    @Column({type: 'varchar', length: 255})
+    imageUrl: string;
 
     @Column({type: 'decimal', precision: 10, scale: 2})
     price: number;    
