@@ -1,0 +1,23 @@
+flowchart TB
+    A["Start: Customer enters the store"] --> B["Show available products"]
+    B --> C{"Product available?"}
+    C -- Yes --> D["Customer adds product to cart"]
+    C -- No --> E@{ label: "Show message: 'Out of stock'" }
+    D --> F["Customer fills in credit card and delivery info"]
+    F --> G["Validate card and delivery info"]
+    G --> H{"Data valid?"}
+    H -- No --> I(["Show error and request correction"])
+    H -- Yes --> J["Show payment summary with purchase info"]
+    J --> K["Customer confirms payment"]
+    K --> L["Backend creates PENDING transaction"]
+    L --> M["Backend calls API to process payment"]
+    M --> N{"Payment successful?"}
+    N -- No --> O["Update transaction as FAILED"]
+    N -- Yes --> P["Update transaction as SUCCESS and assign products"]
+    P --> Q["Update product stock"]
+    Q --> T["Send confirmation email to customer"]
+    O --> R(["Show result: Payment failed"])
+    T --> S(["Show result: Payment successful"])
+    R --> B
+    S --> B
+    E@{ shape: rect}

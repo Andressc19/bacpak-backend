@@ -1,0 +1,54 @@
+---
+config:
+  layout: elk
+---
+classDiagram
+direction RL
+
+    class Customer {
+        +int id
+        +String email
+        +String firstName
+        +String phone
+        +String lastName
+    }
+    
+    class ProductVariant {
+        +int id
+        +String color
+        +String stock
+        +Double price
+    }
+
+    class Product {
+        +int id
+        +String name
+        +String description
+    }
+
+    class Order {
+        +int id
+        +Date orderDate
+        +Double totalAmount
+        +Enum status
+    }
+
+    class OrderItem {
+        +int id
+        +int quantity
+        +Double unitPrice
+    }
+
+    class Delivery {
+        +int id
+        +String address
+        +String extraAddress
+        +Enum status
+        +String estimatedDelivery
+    }
+
+    Customer "1" --> "0..*" Order : places
+    Order "1" --> "1..*" OrderItem : contains
+    OrderItem "1" --> "1" Product : refers
+    Order "1" --> "1" Delivery : delivers
+    Product "1" --> "1..*" ProductVariant: variants
