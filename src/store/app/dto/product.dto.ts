@@ -19,6 +19,8 @@ export class ProductResponseDto {
     @Expose()
     description: string;
     @Expose()
+    shortDescription: string;
+    @Expose()
     imageBaseUrl: string;
     @Expose()
     @Type(() => ProductVariantDto)
